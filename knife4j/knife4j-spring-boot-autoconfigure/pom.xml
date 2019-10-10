@@ -5,13 +5,14 @@
     <parent>
         <artifactId>knife4j</artifactId>
         <groupId>com.github.xiaoymin</groupId>
-        <version>1.9.6</version>
+        <version>1.9.6.x</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
     <artifactId>knife4j-spring-boot-autoconfigure</artifactId>
     <name>knife4j-spring-boot-autoconfigure</name>
     <description>Spring Boot autoconfigure</description>
+    <version>${parent.version}</version>
     <dependencies>
         <!-- Compile dependencies -->
         <dependency>

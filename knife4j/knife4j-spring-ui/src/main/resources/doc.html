@@ -93,6 +93,20 @@
         }*/
         /*.layui-table-tips-main{display:none}
         .layui-table-tips-c{display:none}*/
+
+
+        #searchTxt {
+            background: #fff;
+            right: 10px;
+            left: 10px;
+            color: #444;
+            width: 92%;
+            height: 40px;
+            line-height: 40px;
+            padding: 0 0 0 20px;
+            top: 7px;
+            border-radius: 5px;
+        }
     </style>
     <script>
         /*var _hmt = _hmt || [];
@@ -107,10 +121,20 @@
 <body style="overflow: hidden;">
 <div class="sbu-header" id="sbu-header">
     <div class="sbu-header-left sbu-header-left-wd" id="leftGroup">
-        <div class="form-group sbu-header-group">
+        <!--<div class="form-group sbu-header-group">
             <div class="col-sm-12">
                 <select  class="form-control" id="sbu-group-sel" style="margin-top: 13px;">
                 </select>
+            </div>
+        </div>-->
+        <div class="form-group sbu-header-group">
+            <div class="col-sm-12" style="text-align: right;">
+                <div class="search bar8">
+                    <input type="text" id="searchTxt" placeholder="请输入搜索内容......">
+                    <!--<span title="搜索" id="spanSearch">
+                        <i class="iconfont icon-sousuo" style="font-size: 32px;"></i>
+                    </span>-->
+                </div>
             </div>
         </div>
     </div>
@@ -119,7 +143,7 @@
         <span><a href="https://gitee.com/xiaoym/swagger-bootstrap-ui" target="_blank" id="swaggerBootstrapHrefTitle"></a></span>
     </div>
     <div class="sbu-header-right">
-        <div class="form-group sbu-header-group">
+        <!--<div class="form-group sbu-header-group">
             <div class="col-sm-12" style="text-align: right;">
                 <div class="search bar8">
                     <input type="text" id="searchTxt" placeholder="请输入搜索内容......">
@@ -128,7 +152,7 @@
                     </span>
                 </div>
             </div>
-        </div>
+        </div>-->
     </div>
 </div>
 <div id="container">

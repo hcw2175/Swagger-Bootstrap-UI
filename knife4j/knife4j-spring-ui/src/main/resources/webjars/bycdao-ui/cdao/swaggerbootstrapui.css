@@ -406,7 +406,7 @@ code {
     transition: .3s linear;
     position: absolute;
     top: 11px;
-    right: 0;
+    left: 0;
     z-index: 2;
     height: 30px;
 }
@@ -416,7 +416,6 @@ code {
     !*border-bottom: 2px solid #F9F0DA;*!
 }*/
 .bar8 button {
-
     top: 0;
     right: 0;
     cursor: pointer;
@@ -428,16 +427,16 @@ code {
     color: #F9F0DA;
 }
 .bar8 input::-webkit-input-placeholder{
-    color:white;
+    color:#888;
 }
 .bar8 input::-moz-placeholder{   /* Mozilla Firefox 19+ */
-    color:white;
+    color:#888;
 }
 .bar8 input:-moz-placeholder{    /* Mozilla Firefox 4 to 18 */
-    color:white;
+    color:#888;
 }
 .bar8 input:-ms-input-placeholder{  /* Internet Explorer 10-11 */
-    color:white;
+    color:#888;
 }
 .bar8 span{
     cursor: pointer;
