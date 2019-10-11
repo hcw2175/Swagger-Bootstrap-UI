@@ -824,13 +824,15 @@
 <!--动态tab-->
 <script type="text/html" id="BootstrapDynaTab">
     <div class='tabs-x tabs-left tabs-krajee' id="tabsContent{{id}}" >
-        <ul id="myTab-tabs-left" class="nav nav-tabs" role="tablist" style="width: 120px">
-            <li class="active"><a href="#HomeDoc{{id}}" role="tab" data-toggle="tab"><i class="iconfont icon-ic_description"></i>{{i18n.doc.title}}</a></li>
-            <li><a href="#DebugDoc{{id}}" role="tab-kv" data-toggle="tab"><i class="iconfont icon-debug"></i>{{i18n.debug.title}}</a></li>
-            <li><a href="#RequestTypescript{{id}}" role="tab-kv" data-toggle="tab"><i class="iconfont icon-ic_description"></i>请求参数</a></li>
-            <li><a href="#ResponseTypescript{{id}}" role="tab-kv" data-toggle="tab"><i class="iconfont icon-ic_description"></i>响应参数</a></li>
+        <ul id="myTab-tabs-left" class="nav nav-tabs" role="tablist" style="width: 130px">
+            <li class="active"><a href="#HomeDoc{{id}}" role="tab" data-toggle="tab">{{i18n.doc.title}}</a></li>
+            <li><a href="#DebugDoc{{id}}" role="tab-kv" data-toggle="tab">{{i18n.debug.title}}</a></li>
+            <li><a href="#RequestTypescript{{id}}" role="tab-kv" data-toggle="tab">请求Typescript</a></li>
+            <li><a href="#ResponseTypescript{{id}}" role="tab-kv" data-toggle="tab">响应Typescript</a></li>
+            <li><a href="#RequestJsonTab{{id}}" role="tab-kv" data-toggle="tab">请求JSON</a></li>
+            <li><a href="#ResponseJsonTab{{id}}" role="tab-kv" data-toggle="tab">响应JSON</a></li>
         </ul>
-        <div id="myTabContent-tabs-left" class="tab-content" style="margin-left: 120px">
+        <div id="myTabContent-tabs-left" class="tab-content" style="margin-left: 130px">
             <div class="tab-pane fade in active" id="HomeDoc{{id}}" >
                 <div>
                     <input id="copyDocHashInput{{id}}" type="hidden" value="{{hashCollections[0]}}"/>
@@ -1026,77 +1028,212 @@
             </div>
 
             <div class="tab-pane fade" id="RequestTypescript{{id}}">
-                <h2>请求参数渲染成Typescript class类</h2>
+                <div style="font-weight: bold;font-size: 16px;margin-bottom: 15px;">请求参数渲染成Typescript class类</div>
                 <div id="requestParameter{{id}}-ts" style="width: auto;bottom: 10px;">
                     <div style="background: #f8f8f8;padding: 10px;">
-                        {{ if refparameters && refparameters.length>0 }}
+                        <div style="font-weight: 800;font-size: 16px;margin-top: 20px;">主请求参数：</div>
+                        {{ if parameters && parameters.length>0 }}
+                        <div style="margin-top: 10px; color:red;">{</div>
                         {{each parameters}}
-                        <div style="font-size: 18px;font-weight: 800">{{$value.name}}：</div>
+                        <div style="padding-left: 10px;">
+                                <div style="color: #888888">/** {{$value.description}} */</div>
+                                {{$value.name}}:
+                                {{if $value.in.indexOf('int') > -1 || $value.in.indexOf('double') > -1 }}
+                                    number = 0;
+                                {{else if $value.in.indexOf('List') > -1}}
+                                    array = [];
+                                {{else if $value.in.indexOf('boolean') > -1}}
+                                    boolean = false;
+                                {{else if $value.in.indexOf('body') > -1}}
+                                    body = null;
+                                {{else}}
+                                    {{$value.in}} = '';
+                                {{/if}}
+                            </div>
+                        {{/each}}
+                        <div style="color:red;">}</div>
+                        {{else}}
+                        无
+                        {{/if}}
+
+                        <div style="font-weight: 800;font-size: 16px;margin-top: 20px;">子请求参数：</div>
+                        {{ if refparameters && refparameters.length>0 }}
                         {{each refparameters}}
                         <div>
-                            {{if $index!=0 }}
-                            <div style="font-size: 18px;font-weight: 800; margin-top: 15px;">{{$value.name}}：</div>
-                            {{/if}}
-                            {
-                            <div>
+                            <div style="font-size: 14px;font-weight: 800; margin-top: 15px;">{{$value.name}}：</div>
+                            <div style="margin-top: 10px; color:red;">{</div>
+                            <div style="padding-left: 10px;">
                                 {{each $value.params}}
                                 <div>
                                     <div style="color: #888888">/** {{$value.description}} */</div>
                                     <div>
                                         {{$value.name}}:
                                         {{if $value.type.indexOf('int') > -1 || $value.type.indexOf('double') > -1 }}
-                                        number
+                                            number = 0;
                                         {{else if $value.type.indexOf('List') > -1}}
-                                        array
+                                            array = [];
+                                        {{else if $value.type.indexOf('boolean') > -1}}
+                                            boolean = false;
+                                        {{else if $value.type.indexOf('body') > -1}}
+                                            body = null;
                                         {{else}}
-                                        {{$value.type}}
+                                            {{$value.type}} = '';
                                         {{/if}}
                                     </div>
                                 </div>
                                 {{/each}}
                             </div>
-                            }
+                            <div style="color:red;">}</div>
                         </div>
                         {{/each}}
-                        {{/each}}
                         {{else}}
-                            非对象参数，不需要转换
+                            无
                         {{/if}}
                     </div>
                 </div>
             </div>
 
             <div class="tab-pane fade" id="ResponseTypescript{{id}}">
-                    <h3>响应参数渲染成Typescript class类</h3>
-                    <div id="responseParameter{{id}}-ts" style="width: auto;bottom: 10px;">
-                        <div style="background: #f8f8f8;padding: 10px;">
-                            {{ if responseRefParameters && responseRefParameters.length>0 }}
-                            {{each responseRefParameters}}
-                            <div>
-                                <div style="font-size: 18px;font-weight: 800; margin-top: 15px;">{{$value.name}}：</div>
-                                {
+                <div style="font-weight: bold;font-size: 16px;margin-bottom: 15px;">响应数据渲染成Typescript class类</div>
+                <div id="responseParameter{{id}}-ts" style="width: auto;bottom: 10px;">
+                    <div style="background: #f8f8f8;padding: 10px;">
+                        {{ if responseRefParameters && responseRefParameters.length>0 }}
+                        {{each responseRefParameters}}
+                        <div>
+                            <div style="font-size: 18px;font-weight: 800; margin-top: 15px;">{{$value.name}}：</div>
+                            <div style="margin-top: 10px; color:red;">{</div>
+                            <div style="padding-left: 10px;">
+                                {{each $value.params}}
                                 <div>
+                                    <div style="color: #888888">/** {{$value.description}} */</div>
+                                    <div>
+                                        {{$value.name}}:
+                                        {{if $value.type.indexOf('int') > -1 || $value.type.indexOf('double') > -1 }}
+                                            number = 0;
+                                        {{else if $value.type.indexOf('List') > -1}}
+                                            array = [];
+                                        {{else if $value.type.indexOf('boolean') > -1}}
+                                            boolean = false;
+                                        {{else if $value.type.indexOf('body') > -1}}
+                                            body = null;
+                                        {{else}}
+                                            {{$value.type}} = '';
+                                        {{/if}}
+                                    </div>
+                                </div>
+                                {{/each}}
+                            </div>
+                            <div style="color:red;">}</div>
+                        </div>
+                        {{/each}}
+                        {{else}}
+                        无
+                        {{/if}}
+                    </div>
+                </div>
+            </div>
+
+                <div class="tab-pane fade" id="RequestJsonTab{{id}}">
+                    <div style="font-weight: bold;font-size: 16px;margin-bottom: 15px;">请求参数JSON格式</div>
+                    <div id="RequestJsonTab{{id}}-ts" style="width: auto;bottom: 10px;">
+                        <div style="background: #f8f8f8;padding: 10px;">
+                            <div style="font-weight: 800;font-size: 16px;margin-top: 20px;">主请求参数：</div>
+                            {{ if parameters && parameters.length>0 }}
+                            <div style="margin-top: 10px; color:red;">{</div>
+                            {{each parameters}}
+                            <div style="padding-left: 10px;">
+                                <div style="color: #888888">/** {{$value.description}} */</div>
+                                '{{$value.name}}':
+                                {{if $value.in.indexOf('int') > -1 || $value.in.indexOf('double') > -1 }}
+                                    0;
+                                {{else if $value.in.indexOf('List') > -1}}
+                                    [];
+                                {{else if $value.in.indexOf('boolean') > -1}}
+                                    false;
+                                {{else if $value.in.indexOf('body') > -1}}
+                                    null;
+                                {{else}}
+                                    '';
+                                {{/if}}
+                            </div>
+                            {{/each}}
+                            <div style="color:red;">}</div>
+                            {{else}}
+                            无
+                            {{/if}}
+
+                            <div style="font-weight: 800;font-size: 16px;margin-top: 20px;">子请求参数：</div>
+                            {{ if refparameters && refparameters.length>0 }}
+                            {{each refparameters}}
+                            <div>
+                                <div style="font-size: 14px;font-weight: 800; margin-top: 15px;">{{$value.name}}：</div>
+                                <div style="margin-top: 10px; color:red;">{</div>
+                                <div style="padding-left: 10px;">
                                     {{each $value.params}}
                                     <div>
                                         <div style="color: #888888">/** {{$value.description}} */</div>
                                         <div>
                                             {{$value.name}}:
                                             {{if $value.type.indexOf('int') > -1 || $value.type.indexOf('double') > -1 }}
-                                            number
+                                                0;
                                             {{else if $value.type.indexOf('List') > -1}}
-                                            array
+                                                [];
+                                            {{else if $value.type.indexOf('boolean') > -1}}
+                                                false;
+                                            {{else if $value.type.indexOf('body') > -1}}
+                                                null;
                                             {{else}}
-                                            {{$value.type}}
+                                                '';
                                             {{/if}}
                                         </div>
                                     </div>
                                     {{/each}}
                                 </div>
-                                }
+                                <div style="color:red;">}</div>
                             </div>
                             {{/each}}
                             {{else}}
-                                非对象参数，不需要转换
+                            无
+                            {{/if}}
+                        </div>
+                    </div>
+                </div>
+
+                <div class="tab-pane fade" id="ResponseJsonTab{{id}}">
+                    <div style="font-weight: bold;font-size: 16px;margin-bottom: 15px;">响应参数JSON格式</div>
+                    <div id="ResponseJsonTab{{id}}-ts" style="width: auto;bottom: 10px;">
+                        <div style="background: #f8f8f8;padding: 10px;">
+                            {{ if responseRefParameters && responseRefParameters.length>0 }}
+                            {{each responseRefParameters}}
+                            <div>
+                                <div style="font-size: 18px;font-weight: 800; margin-top: 15px;">{{$value.name}}：</div>
+                                <div style="margin-top: 10px; color:red;">{</div>
+                                <div style="padding-left: 10px;">
+                                    {{each $value.params}}
+                                    <div>
+                                        <div style="color: #888888">/** {{$value.description}} */</div>
+                                        <div>
+                                            {{$value.name}}:
+                                            {{if $value.type.indexOf('int') > -1 || $value.type.indexOf('double') > -1 }}
+                                                0;
+                                            {{else if $value.type.indexOf('List') > -1}}
+                                                [];
+                                            {{else if $value.type.indexOf('boolean') > -1}}
+                                                false;
+                                            {{else if $value.type.indexOf('body') > -1}}
+                                                null;
+                                            {{else}}
+                                                '';
+                                            {{/if}}
+                                        </div>
+                                    </div>
+                                    {{/each}}
+                                </div>
+                                <div style="color:red;">}</div>
+                            </div>
+                            {{/each}}
+                            {{else}}
+                            无
                             {{/if}}
                         </div>
                     </div>
