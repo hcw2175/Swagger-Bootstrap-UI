@@ -6,7 +6,7 @@
 
     <groupId>com.github.xiaoymin</groupId>
     <artifactId>knife4j</artifactId>
-    <version>1.9.6.x</version>
+    <version>1.9.6.2</version>
     <modules>
         <module>knife4j-annotations</module>
         <module>knife4j-spring</module>

@@ -5,24 +5,23 @@
     <parent>
         <artifactId>knife4j</artifactId>
         <groupId>com.github.xiaoymin</groupId>
-        <version>1.9.6.x</version>
+        <version>1.9.6.2</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <artifactId>knife4j-spring-boot-starter</artifactId>
-    <version>${parent.version}</version>
+    <version>1.9.6.2</version>
     <name>knife4j-spring-boot-starter</name>
     <description>Spring Boot 项目starter,快速使用knife4j增强文档</description>
     <dependencies>
-
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-autoconfigure</artifactId>
-            <version>${parent.version}</version>
+            <version>1.9.6.2</version>
         </dependency>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-ui</artifactId>
-            <version>${parent.version}</version>
+            <version>1.9.6.2</version>
         </dependency>
         <dependency>
             <groupId>io.springfox</groupId>
