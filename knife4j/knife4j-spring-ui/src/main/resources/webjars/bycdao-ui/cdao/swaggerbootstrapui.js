@@ -701,7 +701,7 @@
                 that.getMenu().show();
                 that.getSearchMenu().hide();
             }
-            //$("#" + that.searchEleId).click();
+            $("#" + that.searchEleId).click();
         });
         //回车事件;
         $(document).keydown(function (event) {

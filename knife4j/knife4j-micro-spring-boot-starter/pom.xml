@@ -2,21 +2,23 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
     <parent>
-        <artifactId>knife4j</artifactId>
+        <artifactId>knife4j-parent</artifactId>
         <groupId>com.github.xiaoymin</groupId>
         <version>1.9.6.2</version>
     </parent>
-    <modelVersion>4.0.0</modelVersion>
+
     <artifactId>knife4j-micro-spring-boot-starter</artifactId>
     <name>knife4j-micro-spring-boot-starter</name>
     <description>Spring Cloud微服务架构下,子服务无需引用前端UI模块,只需引入后端的Jar包</description>
-    <version>1.9.6.2</version>
+
     <dependencies>
         <dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-autoconfigure</artifactId>
-            <version>1.9.6.2</version>
+            <version>${project.version}</version>
         </dependency>
     </dependencies>
 </project>
