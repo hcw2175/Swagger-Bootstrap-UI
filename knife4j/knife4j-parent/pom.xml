@@ -6,7 +6,7 @@
 
     <groupId>com.github.xiaoymin</groupId>
     <artifactId>knife4j-parent</artifactId>
-    <version>1.9.6.2</version>
+    <version>1.9.6.2-SNAPSHOT</version>
     <packaging>pom</packaging>
     <name>knife4j</name>
     <url>https://gitee.com/xiaoym/swagger-bootstrap-ui</url>
