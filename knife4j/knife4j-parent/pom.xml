@@ -6,7 +6,7 @@
 
     <groupId>com.github.xiaoymin</groupId>
     <artifactId>knife4j-parent</artifactId>
-    <version>1.9.6.2-SNAPSHOT</version>
+    <version>1.9.6.2-RELEASE</version>
     <packaging>pom</packaging>
     <name>knife4j</name>
     <url>https://gitee.com/xiaoym/swagger-bootstrap-ui</url>
@@ -281,7 +281,7 @@
         <repository>
             <id>nexus</id>
             <name>Nexus Repository</name>
-            <url>http://192.168.0.26:10081/repository/maven-public/</url>
+            <url>http://120.76.234.18:10081/repository/maven-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -294,7 +294,7 @@
         <pluginRepository>
             <id>nexus</id>
             <name>Nexus Plugin Repository</name>
-            <url>http://192.168.0.26:10081/repository/maven-public/</url>
+            <url>http://120.76.234.18:10081/repository/maven-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -308,11 +308,11 @@
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>
-            <url>http://192.168.0.26:10081/repository/maven-releases/</url>
+            <url>http://120.76.234.18:10081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
-            <url>http://192.168.0.26:10081/repository/maven-snapshots/</url>
+            <url>http://120.76.234.18:10081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>

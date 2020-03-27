@@ -7,7 +7,7 @@
     <groupId>com.github.xiaoymin</groupId>
     <artifactId>knife4j-projects</artifactId>
     <packaging>pom</packaging>
-    <version>1.9.6.2-SNAPSHOT</version>
+    <version>1.9.6.2-RELEASE</version>
 
     <modules>
         <module>knife4j-parent</module>

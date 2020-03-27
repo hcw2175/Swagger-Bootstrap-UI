@@ -6,7 +6,7 @@
     <parent>
         <artifactId>knife4j-parent</artifactId>
         <groupId>com.github.xiaoymin</groupId>
-        <version>1.9.6.2-SNAPSHOT</version>
+        <version>1.9.6.2-RELEASE</version>
     </parent>
 
     <artifactId>knife4j-spring-boot-starter</artifactId>
