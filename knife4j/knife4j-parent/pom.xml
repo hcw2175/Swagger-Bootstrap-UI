@@ -281,7 +281,7 @@
         <repository>
             <id>nexus</id>
             <name>Nexus Repository</name>
-            <url>http://120.76.234.18:10081/repository/maven-public/</url>
+            <url>http://120.77.18.119:10081/repository/maven-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -294,7 +294,7 @@
         <pluginRepository>
             <id>nexus</id>
             <name>Nexus Plugin Repository</name>
-            <url>http://120.76.234.18:10081/repository/maven-public/</url>
+            <url>http://120.77.18.119:10081/repository/maven-public/</url>
             <snapshots>
                 <enabled>true</enabled>
             </snapshots>
@@ -308,11 +308,11 @@
     <distributionManagement>
         <repository>
             <id>nexus-releases</id>
-            <url>http://120.76.234.18:10081/repository/maven-releases/</url>
+            <url>http://120.77.18.119:10081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
             <id>nexus-snapshots</id>
-            <url>http://120.76.234.18:10081/repository/maven-snapshots/</url>
+            <url>http://120.77.18.119:10081/repository/maven-snapshots/</url>
         </snapshotRepository>
     </distributionManagement>
 </project>

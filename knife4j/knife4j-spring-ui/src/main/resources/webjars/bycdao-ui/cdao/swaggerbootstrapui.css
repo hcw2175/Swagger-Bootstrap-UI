@@ -41,7 +41,7 @@ html {
 }
 
 .sbu-header-right{
-    /*width:20%;*/
+    width:20%;
     float:right;
     vertical-align: middle;
     height: 60px;
